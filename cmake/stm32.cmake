@@ -23,7 +23,9 @@ set(CMSIS_DSP_SRC
     TransformFunctions/arm_rfft_fast_init_f32.c
     TransformFunctions/arm_cfft_radix8_f32.c
     TransformFunctions/arm_bitreversal2.S
+    TransformFunctions/arm_cfft_init_f32.c
     CommonTables/arm_common_tables.c
+    CommonTables/arm_const_structs.c
     ComplexMathFunctions/arm_cmplx_mag_f32.c
     StatisticsFunctions/arm_max_f32.c
 )
