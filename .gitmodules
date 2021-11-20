@@ -1,0 +1,4 @@
+[submodule "lib/main/CMSIS"]
+	path = lib/main/CMSIS
+	url = https://github.com/ARM-software/CMSIS_5.git
+	branch = master
