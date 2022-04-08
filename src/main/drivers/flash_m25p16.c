@@ -165,6 +165,8 @@ static bool m25p16_readIdentification(void)
     // Manufacturer, memory type, and capacity
     chipID = (in[1] << 16) | (in[2] << 8) | (in[3]);
 
+    escDebugFlashChipId = chipID;
+
     // All supported chips use the same pagesize of 256 bytes
 
     switch (chipID) {
@@ -233,6 +235,9 @@ static bool m25p16_readIdentification(void)
 bool m25p16_init(int flashNumToUse)
 {
     busDev = busDeviceInit(BUSTYPE_SPI, DEVHW_M25P16, flashNumToUse, OWNER_FLASH);
+
+    escDebugFlashBusInit = (busDev == NULL);
+
     if (busDev == NULL) {
         return false;
     }

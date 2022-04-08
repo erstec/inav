@@ -91,4 +91,9 @@ int flashPartitionCount(void);
 uint32_t flashPartitionSize(flashPartition_t *partition);
 void flashPartitionErase(flashPartition_t *partition);
 
+extern uint8_t escDebugFlashFSinit;
+extern bool escDebugFlashHave;
+extern uint32_t escDebugFlashChipId;
+extern bool escDebugFlashBusInit;
+
 //#endif [> USE_FLASHFS <]

@@ -40,6 +40,10 @@
 static flashPartitionTable_t flashPartitionTable;
 static int flashPartitions = 0;
 
+extern uint8_t escDebugFlashFSinit = 0;
+extern bool escDebugFlashHave = false;
+extern bool escDebugFlashBusInit = false;
+extern uint32_t escDebugFlashChipId = 0;
 
 #ifdef USE_SPI
 static bool flashSpiInit(void)
@@ -274,6 +278,8 @@ bool flashInit(void)
     memset(&flashPartitionTable, 0x00, sizeof(flashPartitionTable));
 
     bool haveFlash = flashDeviceInit();
+
+    escDebugFlashHave = haveFlash;
 
     flashConfigurePartitions();
 

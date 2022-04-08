@@ -387,9 +387,11 @@ void init(void)
 #ifdef USE_FLASH_M25P16
             // Must initialise the device to read _anything_
             /*m25p16_init(0);*/
+            escDebugFlashFSinit += 1000;
             if (!flashDeviceInitialized) {
                 flashDeviceInitialized = flashInit();
             }
+            escDebugFlashFSinit = flashDeviceInitialized ? 1001 : 1002;
 #endif
             emfat_init_files();
         }
@@ -619,9 +621,11 @@ void init(void)
 #ifdef USE_FLASHFS
         case BLACKBOX_DEVICE_FLASH:
 #ifdef USE_FLASH_M25P16
+            escDebugFlashFSinit = 1;
             if (!flashDeviceInitialized) {
                 flashDeviceInitialized = flashInit();
             }
+            escDebugFlashFSinit = flashDeviceInitialized ? 2 : 3;
 #endif
             flashfsInit();
             break;

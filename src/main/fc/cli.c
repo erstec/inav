@@ -3452,6 +3452,11 @@ static void cliStatus(char *cmdline)
     if (getPwmInitError() != PWM_INIT_ERROR_NONE) {
         cliPrintLinef("PWM output init error: %s", getPwmInitErrorMessage());
     }
+
+    const flashGeometry_t *geometry = flashGetGeometry();
+    cliPrintLinef("SPI FLASH Status: %d %d %d - %d %d %d %d %d",
+        escDebugFlashFSinit, escDebugFlashHave, escDebugFlashChipId, 
+        geometry->pageSize, geometry->pagesPerSector, geometry->sectors, geometry->sectorSize, geometry->totalSize);
 }
 
 #ifndef SKIP_TASK_STATISTICS
