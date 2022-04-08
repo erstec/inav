@@ -3454,8 +3454,9 @@ static void cliStatus(char *cmdline)
     }
 
     const flashGeometry_t *geometry = flashGetGeometry();
-    cliPrintLinef("SPI FLASH Status: %d %d %d - %d %d %d %d %d",
-        escDebugFlashFSinit, escDebugFlashHave, escDebugFlashChipId, 
+    cliPrintLinef("SPI FLASH Status: %d %d %d %d - %d %d %d - %d %d %d %d %d",
+        escDebugFlashFSinit, escDebugFlashHave, escDebugFlashBusInit, escDebugFlashChipId, 
+        escDebugFlashCSNpin, escDebugFlashInitHost, escDebugFlashDevTypeFound,
         geometry->pageSize, geometry->pagesPerSector, geometry->sectors, geometry->sectorSize, geometry->totalSize);
 }
 

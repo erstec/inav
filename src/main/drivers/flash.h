@@ -95,5 +95,8 @@ extern uint8_t escDebugFlashFSinit;
 extern bool escDebugFlashHave;
 extern uint32_t escDebugFlashChipId;
 extern bool escDebugFlashBusInit;
+extern bool escDebugFlashCSNpin;
+extern bool escDebugFlashInitHost;
+extern int escDebugFlashDevTypeFound;
 
 //#endif [> USE_FLASHFS <]

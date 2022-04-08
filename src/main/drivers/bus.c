@@ -32,6 +32,9 @@
 #include "drivers/bus.h"
 #include "drivers/io.h"
 
+#include "drivers/flash.h"
+#include "io_impl.h"
+
 #define BUSDEV_MAX_DEVICES 16
 
 #ifdef USE_SPI
@@ -91,7 +94,12 @@ static bool busDevInit_SPI(busDevice_t * dev, const busDeviceDescriptor_t * desc
     dev->busdev.spi.spiBus = descriptor->busdev.spi.spiBus;
     dev->busdev.spi.csnPin = IOGetByTag(descriptor->busdev.spi.csnPin);
 
-    if (dev->busdev.spi.csnPin && spiBusInitHost(dev)) {
+    bool state = spiBusInitHost(dev);
+
+    escDebugFlashCSNpin = (dev->busdev.spi.csnPin != NULL);
+    escDebugFlashInitHost = state;
+
+    if (dev->busdev.spi.csnPin && state) {
         // Init CSN pin
         IOInit(dev->busdev.spi.csnPin, owner, RESOURCE_SPI_CS, 0);
         IOConfigGPIO(dev->busdev.spi.csnPin, SPI_IO_CS_CFG);
@@ -116,9 +124,14 @@ busDevice_t * busDeviceInit(busType_e bus, devHardwareType_e hw, uint8_t tag, re
 
     for (const busDeviceDescriptor_t * descriptor = __busdev_registry_start; (descriptor) < __busdev_registry_end; descriptor++) {
         if (hw == descriptor->devHwType && (bus == descriptor->busType || bus == BUSTYPE_ANY) && (tag == descriptor->tag)) {
+
+            escDebugFlashDevTypeFound = 1;
+
             // We have a candidate - initialize device context memory
             busDevice_t * dev = descriptor->devicePtr;
             if (dev) {
+                escDebugFlashDevTypeFound = 2;
+
                 memset(dev, 0, sizeof(busDevice_t));
 
                 dev->descriptorPtr = descriptor;
@@ -146,9 +159,11 @@ busDevice_t * busDeviceInit(busType_e bus, devHardwareType_e hw, uint8_t tag, re
                     case BUSTYPE_SPI:
 #ifdef USE_SPI
                         if (!busDevInit_SPI(dev, descriptor, owner)) {
+                            escDebugFlashDevTypeFound = 3;
                             busDeviceDeInit(dev);
                             return NULL;
                         }
+                        escDebugFlashDevTypeFound = 4;
                         break;
 #else
                         busDeviceDeInit(dev);
