@@ -47,6 +47,7 @@ extern uint32_t escDebugFlashChipId = 0;
 extern bool escDebugFlashCSNpin = 0;
 extern bool escDebugFlashInitHost = false;
 extern int escDebugFlashDevTypeFound = 0;
+extern bool escDebugFlashSPItransaction = false;
 
 #ifdef USE_SPI
 static bool flashSpiInit(void)

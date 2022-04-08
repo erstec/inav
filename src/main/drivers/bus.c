@@ -87,7 +87,7 @@ static bool busDevInit_I2C(busDevice_t * dev, const busDeviceDescriptor_t * desc
 #endif
 
 #ifdef USE_SPI
-static bool busDevInit_SPI(busDevice_t * dev, const busDeviceDescriptor_t * descriptor, resourceOwner_e owner)
+static bool busDevInit_SPI(busDevice_t * dev, const busDeviceDescriptor_t * descriptor, resourceOwner_e owner, bool log)
 {
     dev->busType = descriptor->busType;
     dev->irqPin = IOGetByTag(descriptor->irqPin);
@@ -96,8 +96,10 @@ static bool busDevInit_SPI(busDevice_t * dev, const busDeviceDescriptor_t * desc
 
     bool state = spiBusInitHost(dev);
 
-    escDebugFlashCSNpin = (dev->busdev.spi.csnPin != NULL);
-    escDebugFlashInitHost = state;
+    if (log) {
+        escDebugFlashCSNpin = (dev->busdev.spi.csnPin != NULL);
+        escDebugFlashInitHost = state;
+    }
 
     if (dev->busdev.spi.csnPin && state) {
         // Init CSN pin
@@ -125,12 +127,12 @@ busDevice_t * busDeviceInit(busType_e bus, devHardwareType_e hw, uint8_t tag, re
     for (const busDeviceDescriptor_t * descriptor = __busdev_registry_start; (descriptor) < __busdev_registry_end; descriptor++) {
         if (hw == descriptor->devHwType && (bus == descriptor->busType || bus == BUSTYPE_ANY) && (tag == descriptor->tag)) {
 
-            escDebugFlashDevTypeFound = 1;
+            if (hw == DEVHW_M25P16) escDebugFlashDevTypeFound = 1;
 
             // We have a candidate - initialize device context memory
             busDevice_t * dev = descriptor->devicePtr;
             if (dev) {
-                escDebugFlashDevTypeFound = 2;
+                if (hw == DEVHW_M25P16) escDebugFlashDevTypeFound = 2;
 
                 memset(dev, 0, sizeof(busDevice_t));
 
@@ -158,12 +160,18 @@ busDevice_t * busDeviceInit(busType_e bus, devHardwareType_e hw, uint8_t tag, re
 
                     case BUSTYPE_SPI:
 #ifdef USE_SPI
-                        if (!busDevInit_SPI(dev, descriptor, owner)) {
-                            escDebugFlashDevTypeFound = 3;
+                        if (hw == DEVHW_M25P16) escDebugFlashDevTypeFound = 3;
+
+                        if (!busDevInit_SPI(dev, descriptor, owner, hw == DEVHW_M25P16)) {
+
+                            if (hw == DEVHW_M25P16) escDebugFlashDevTypeFound = 4;
+                            
                             busDeviceDeInit(dev);
                             return NULL;
                         }
-                        escDebugFlashDevTypeFound = 4;
+
+                        if (hw == DEVHW_M25P16) escDebugFlashDevTypeFound = 5;
+
                         break;
 #else
                         busDeviceDeInit(dev);

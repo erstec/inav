@@ -160,7 +160,7 @@ static bool m25p16_readIdentification(void)
      */
     in[1] = 0;
 
-    busTransfer(busDev, in, out, sizeof(out));
+    escDebugFlashSPItransaction = busTransfer(busDev, in, out, sizeof(out));
 
     // Manufacturer, memory type, and capacity
     chipID = (in[1] << 16) | (in[2] << 8) | (in[3]);
@@ -244,7 +244,11 @@ bool m25p16_init(int flashNumToUse)
 
 #ifndef M25P16_SPI_SHARED
     busSetSpeed(busDev, BUS_SPEED_FAST);
+
+    escDebugFlashDevTypeFound = 6;
 #endif
+
+    busSetSpeed(busDev, BUS_SPEED_STANDARD * 2);
 
     return m25p16_readIdentification();
 }

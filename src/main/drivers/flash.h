@@ -98,5 +98,6 @@ extern bool escDebugFlashBusInit;
 extern bool escDebugFlashCSNpin;
 extern bool escDebugFlashInitHost;
 extern int escDebugFlashDevTypeFound;
+extern bool escDebugFlashSPItransaction;
 
 //#endif [> USE_FLASHFS <]

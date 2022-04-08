@@ -75,19 +75,21 @@ void spiBusSetSpeed(const busDevice_t * dev, busSpeed_e speed)
 
 bool spiBusTransfer(const busDevice_t * dev, uint8_t * rxBuf, const uint8_t * txBuf, int length)
 {
+    bool state = true;
+
     SPI_TypeDef * instance = spiInstanceByDevice(dev->busdev.spi.spiBus);
 
     if (!(dev->flags & DEVFLAGS_USE_MANUAL_DEVICE_SELECT)) {
         spiBusSelectDevice(dev);
     }
 
-    spiTransfer(instance, rxBuf, txBuf, length);
+    state = spiTransfer(instance, rxBuf, txBuf, length);
 
     if (!(dev->flags & DEVFLAGS_USE_MANUAL_DEVICE_SELECT)) {
         spiBusDeselectDevice(dev);
     }
 
-    return true;
+    return state;
 }
 
 bool spiBusTransferMultiple(const busDevice_t * dev, busTransferDescriptor_t * dsc, int count)
