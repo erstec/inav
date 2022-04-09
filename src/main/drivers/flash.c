@@ -49,6 +49,10 @@ extern bool escDebugFlashInitHost = false;
 extern int escDebugFlashDevTypeFound = 0;
 extern bool escDebugFlashSPItransaction = false;
 
+extern int escDebugFlashIOTag = -1;
+extern int escDebugFlashIOPin = -1;
+extern int escDebugFlashIOPin2 = -1;
+
 #ifdef USE_SPI
 static bool flashSpiInit(void)
 {

@@ -3454,10 +3454,11 @@ static void cliStatus(char *cmdline)
     }
 
     const flashGeometry_t *geometry = flashGetGeometry();
-    cliPrintLinef("SPI FLASH Status 12: %d %d %d %d - %d %d %d %d - %d %d %d %d %d",
+    cliPrintLinef("SPI FLASH Status 12: %d %d %d %d - %d %d %d %d - %d %d %d %d %d - %d %d %d",
         escDebugFlashFSinit, escDebugFlashHave, escDebugFlashBusInit, escDebugFlashChipId, 
         escDebugFlashCSNpin, escDebugFlashInitHost, escDebugFlashDevTypeFound, escDebugFlashSPItransaction,
-        geometry->pageSize, geometry->pagesPerSector, geometry->sectors, geometry->sectorSize, geometry->totalSize);
+        geometry->pageSize, geometry->pagesPerSector, geometry->sectors, geometry->sectorSize, geometry->totalSize,
+        escDebugFlashIOTag, escDebugFlashIOPin, escDebugFlashIOPin2);
 }
 
 #ifndef SKIP_TASK_STATISTICS

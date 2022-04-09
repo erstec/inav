@@ -100,4 +100,8 @@ extern bool escDebugFlashInitHost;
 extern int escDebugFlashDevTypeFound;
 extern bool escDebugFlashSPItransaction;
 
+extern int escDebugFlashIOTag;
+extern int escDebugFlashIOPin;
+extern int escDebugFlashIOPin2;
+
 //#endif [> USE_FLASHFS <]

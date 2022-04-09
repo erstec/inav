@@ -28,6 +28,8 @@
 #include "drivers/io_impl.h"
 #include "drivers/rcc.h"
 
+#include "drivers/flash.h"
+
 /* for F30x processors */
 #if defined(STM32F303xC)
 #ifndef GPIO_AF_SPI1
@@ -196,6 +198,19 @@ bool spiInitDevice(SPIDevice device, bool leadingEdge)
     } else {
         IOConfigGPIOAF(IOGetByTag(spi->sck),  SPI_IO_AF_CFG, spi->af);
         IOConfigGPIOAF(IOGetByTag(spi->miso), SPI_IO_AF_CFG, spi->af);
+
+        //escDebugFlashIOTag = IO_TAG(SPI3_MOSI_PIN); // x3C = Port(3)(C) / Pin(C)(12)
+        //escDebugFlashIOTag =;
+
+        escDebugFlashIOPin = (spiDeviceByInstance(spi->dev) == SPIDEV_3);
+        escDebugFlashIOPin2 = (IO_TAG(SPI3_MOSI_PIN) == IO_TAG(PC12));
+
+        if (spiDeviceByInstance(spi->dev) == SPIDEV_3 && IO_TAG(SPI3_MOSI_PIN) == IO_TAG(PC12)) {
+            //spi->af = GPIO_AF7_SPI3;
+            //spi->af = GPIO_AF_SPI1;
+            escDebugFlashIOTag = 100;
+        }
+
         IOConfigGPIOAF(IOGetByTag(spi->mosi), SPI_IO_AF_CFG, spi->af);
     }
 

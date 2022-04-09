@@ -243,14 +243,10 @@ bool m25p16_init(int flashNumToUse)
     }
 
 #ifndef M25P16_SPI_SHARED
-    //busSetSpeed(busDev, BUS_SPEED_FAST);
-    //busSetSpeed(busDev, BUS_SPEED_STANDARD);
-    //busSetSpeed(busDev, BUS_SPEED_SLOW);
+    busSetSpeed(busDev, BUS_SPEED_FAST);
 
     escDebugFlashDevTypeFound = 6;
 #endif
-
-    delay(500);
 
     return m25p16_readIdentification();
 }
