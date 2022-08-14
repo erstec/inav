@@ -42,66 +42,66 @@
 #define MPU6050_I2C_BUS         BUS_I2C1
 #define MPU_ADDRESS             0x68
 
-#define USE_BARO
-#define BARO_I2C_BUS            BUS_I2C1
-#define USE_BARO_BMP280
-#define USE_BARO_MS5611
-#define USE_BARO_BMP085
-#define USE_BARO_DPS310
-#define USE_BARO_SPL06
-#define USE_BARO_BMP085
+// #define USE_BARO
+// #define BARO_I2C_BUS            BUS_I2C1
+// #define USE_BARO_BMP280
+// #define USE_BARO_MS5611
+// #define USE_BARO_BMP085
+// #define USE_BARO_DPS310
+// #define USE_BARO_SPL06
+// #define USE_BARO_BMP085
 
-#define USE_MAG
-#define MAG_I2C_BUS             BUS_I2C1
-#define USE_MAG_HMC5883
-#define USE_MAG_QMC5883
-#define USE_MAG_IST8310
-#define USE_MAG_IST8308
-#define USE_MAG_MAG3110
-#define USE_MAG_LIS3MDL
+// #define USE_MAG
+// #define MAG_I2C_BUS             BUS_I2C1
+// #define USE_MAG_HMC5883
+// #define USE_MAG_QMC5883
+// #define USE_MAG_IST8310
+// #define USE_MAG_IST8308
+// #define USE_MAG_MAG3110
+// #define USE_MAG_LIS3MDL
 
-#define PITOT_I2C_BUS           BUS_I2C1
-#define TEMPERATURE_I2C_BUS     BUS_I2C1
-#define BNO055_I2C_BUS          BUS_I2C1
+// #define PITOT_I2C_BUS           BUS_I2C1
+// #define TEMPERATURE_I2C_BUS     BUS_I2C1
+// #define BNO055_I2C_BUS          BUS_I2C1
 
-#define USE_RANGEFINDER
-#define USE_RANGEFINDER_MSP
-#define USE_RANGEFINDER_BENEWAKE
-#define USE_RANGEFINDER_VL53L0X
-#define USE_RANGEFINDER_VL53L1X
-#define USE_RANGEFINDER_US42
-#define USE_RANGEFINDER_TOF10120_I2C
+// #define USE_RANGEFINDER
+// #define USE_RANGEFINDER_MSP
+// #define USE_RANGEFINDER_BENEWAKE
+// #define USE_RANGEFINDER_VL53L0X
+// #define USE_RANGEFINDER_VL53L1X
+// #define USE_RANGEFINDER_US42
+// #define USE_RANGEFINDER_TOF10120_I2C
 
-#define USE_OPFLOW
-#define USE_OPFLOW_MSP
-#define USE_OPFLOW_CXOF
+// #define USE_OPFLOW
+// #define USE_OPFLOW_MSP
+// #define USE_OPFLOW_CXOF
 
-#define USE_FLASHFS
-#define USE_FLASH_M25P16
+// #define USE_FLASHFS
+// #define USE_FLASH_M25P16
 
-#define USE_SPI
-#define USE_SPI_DEVICE_1
+// #define USE_SPI
+// #define USE_SPI_DEVICE_1
 
-#define M25P16_CS_PIN           PA4
-#define M25P16_SPI_BUS          BUS_SPI1
+// #define M25P16_CS_PIN           PA4
+// #define M25P16_SPI_BUS          BUS_SPI1
 
-#define SPI1_NSS_PIN            PA4
-#define SPI1_SCK_PIN            PA5
-#define SPI1_MISO_PIN           PA6
-#define SPI1_MOSI_PIN           PA7
+// #define SPI1_NSS_PIN            PA4
+// #define SPI1_SCK_PIN            PA5
+// #define SPI1_MISO_PIN           PA6
+// #define SPI1_MOSI_PIN           PA7
 
-#if defined(BLACKPILL)
-#define USE_SPI_DEVICE_2
+// #if defined(BLACKPILL)
+// #define USE_SPI_DEVICE_2
 
-#define SPI2_NSS_PIN            PB12
-#define SPI2_SCK_PIN            PB13
-#define SPI2_MISO_PIN           PB14
-#define SPI2_MOSI_PIN           PB15
+// #define SPI2_NSS_PIN            PB12
+// #define SPI2_SCK_PIN            PB13
+// #define SPI2_MISO_PIN           PB14
+// #define SPI2_MOSI_PIN           PB15
 
-#define USE_MAX7456
-#define MAX7456_SPI_BUS         BUS_SPI2
-#define MAX7456_CS_PIN          PB12
-#endif
+// #define USE_MAX7456
+// #define MAX7456_SPI_BUS         BUS_SPI2
+// #define MAX7456_CS_PIN          PB12
+// #endif
 
 #define USE_VCP
 #define USE_UART1
@@ -140,9 +140,9 @@
 #define DEFAULT_FEATURES        (FEATURE_TX_PROF_SEL | FEATURE_VBAT | FEATURE_SOFTSERIAL )
 #endif
 
-#define USE_DSHOT
-#define USE_ESC_SENSOR
-#define USE_SERIAL_4WAY_BLHELI_INTERFACE
+// #define USE_DSHOT
+// #define USE_ESC_SENSOR
+// #define USE_SERIAL_4WAY_BLHELI_INTERFACE
 
 #define DEFAULT_RX_TYPE         RX_TYPE_SERIAL
 #define SERIALRX_PROVIDER       SERIALRX_IBUS

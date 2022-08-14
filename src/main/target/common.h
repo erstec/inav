@@ -40,11 +40,11 @@
 #define USE_I2C_PULLUP          // Enable built-in pullups on all boards in case external ones are too week
 
 #define USE_SERIAL_RX
-#define USE_SERIALRX_SPEKTRUM   // Cheap and fairly common protocol
+// #define USE_SERIALRX_SPEKTRUM   // Cheap and fairly common protocol
 #define USE_SERIALRX_SBUS       // Very common protocol
-#define USE_SERIALRX_IBUS       // Cheap FlySky & Turnigy receivers
-#define USE_SERIALRX_FPORT
-#define USE_SERIALRX_FPORT2
+// #define USE_SERIALRX_IBUS       // Cheap FlySky & Turnigy receivers
+// #define USE_SERIALRX_FPORT
+// #define USE_SERIALRX_FPORT2
 
 //#define USE_DEV_TOOLS           // tools for dev use only. Undefine for release builds.
 
@@ -85,8 +85,8 @@
 #endif
 
 #define USE_MR_BRAKING_MODE
-#define USE_PITOT
-#define USE_PITOT_ADC
+// #define USE_PITOT
+// #define USE_PITOT_ADC
 
 #define USE_DYNAMIC_FILTERS
 #define USE_GYRO_KALMAN
@@ -95,16 +95,16 @@
 #define USE_EXTENDED_CMS_MENUS
 
 // NAZA GPS support for F4+ only
-#define USE_GPS_PROTO_NAZA
+// #define USE_GPS_PROTO_NAZA
 
 // Allow default rangefinders
 #define USE_RANGEFINDER
 #define USE_RANGEFINDER_MSP
-#define USE_RANGEFINDER_BENEWAKE
+// #define USE_RANGEFINDER_BENEWAKE
 #define USE_RANGEFINDER_VL53L0X
-#define USE_RANGEFINDER_VL53L1X
-#define USE_RANGEFINDER_US42
-#define USE_RANGEFINDER_TOF10120_I2C
+// #define USE_RANGEFINDER_VL53L1X
+// #define USE_RANGEFINDER_US42
+// #define USE_RANGEFINDER_TOF10120_I2C
 
 // Allow default optic flow boards
 #define USE_OPFLOW
@@ -147,16 +147,16 @@
 #define USE_GPS_PROTO_MTK
 
 #define USE_TELEMETRY_SIM
-#define USE_TELEMETRY_MAVLINK
+// #define USE_TELEMETRY_MAVLINK
 #define USE_MSP_OVER_TELEMETRY
 
-#define USE_SERIALRX_SRXL2     // Spektrum SRXL2 protocol
-#define USE_SERIALRX_JETIEXBUS
-#define USE_SERIALRX_MAVLINK
-#define USE_TELEMETRY_SRXL
-#define USE_SPEKTRUM_CMS_TELEMETRY
+// #define USE_SERIALRX_SRXL2     // Spektrum SRXL2 protocol
+// #define USE_SERIALRX_JETIEXBUS
+// #define USE_SERIALRX_MAVLINK
+// #define USE_TELEMETRY_SRXL
+// #define USE_SPEKTRUM_CMS_TELEMETRY
 //#define USE_SPEKTRUM_VTX_CONTROL //Some functions from betaflight still not implemented
-#define USE_SPEKTRUM_VTX_TELEMETRY
+// #define USE_SPEKTRUM_VTX_TELEMETRY
 
 #define USE_VTX_COMMON
 
@@ -184,7 +184,7 @@
 #define USE_TELEMETRY_IBUS
 #define USE_TELEMETRY_SMARTPORT
 #define USE_TELEMETRY_CRSF
-#define USE_TELEMETRY_JETIEXBUS
+// #define USE_TELEMETRY_JETIEXBUS
 // These are rather exotic serial protocols
 #define USE_RX_MSP
 //#define USE_MSP_RC_OVERRIDE
