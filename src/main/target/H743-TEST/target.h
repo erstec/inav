@@ -42,14 +42,14 @@
 
 #define USE_IMU_MPU6500
 
-#define IMU_MPU6500_ALIGN       CW0_DEG_FLIP
+#define IMU_MPU6500_ALIGN       CW0_DEG
 #define MPU6500_SPI_BUS         BUS_SPI1
 #define MPU6500_CS_PIN          PA4
 #define MPU6500_EXTI_PIN        PC4
 
 #define USE_IMU_MPU9250
 
-#define IMU_MPU9250_ALIGN       CW0_DEG_FLIP
+#define IMU_MPU9250_ALIGN       CW0_DEG
 #define MPU9250_SPI_BUS         BUS_SPI1
 #define MPU9250_CS_PIN          PA4
 #define MPU9250_EXTI_PIN        PC4
